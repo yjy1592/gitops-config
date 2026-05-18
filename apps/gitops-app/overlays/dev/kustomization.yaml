@@ -7,15 +7,15 @@ namePrefix: dev-
 # commonLabels:
 #   env: dev
 labels:
-  - pairs:
-      app: gitops-app
-      env: dev
-    includeSelectors: true
-    includeTemplates: true
+- includeSelectors: true
+  includeTemplates: true
+  pairs:
+    app: gitops-app
+    env: dev
 images:
-  - name: gitops-app
-    newName: jun1592/gitops-app
-    newTag: latest
+- name: gitops-app
+  newName: jun1592/gitops-app
+  newTag: sha-f01ceed
 replicas:
-  - name: gitops-app
-    count: 1
+- count: 1
+  name: gitops-app
