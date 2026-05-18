@@ -5,28 +5,25 @@ metadata:
   namespace: argocd
 spec:
   generators:
-    - git:
-        repoURL: https://github.com/yjy1592/gitops-config
-        revision: main
-        directories:
-          - path: apps/spring-boot/overlays/*
+    - list:
+        element:
+          - env: dev
+          - env: prod
   template:
     metadata:
-      name: "spring-boot-{{path.basename}}"
-      namespace: argocd
+      name: "gitops-app-{{env}}"
     spec:
-      project: default
+      project: gitops-project
       source:
         repoURL: https://github.com/yjy1592/gitops-config
         targetRevision: main
-        path: "{{path}}"
+        path: apps/gitops-app/overlays/{{env}}
       destination:
         server: https://kubernetes.default.svc
-        namespace: "spring-boot-{{path.basename}}"
+        namespace: gitops-app-{{env}}
       syncPolicy:
         automated:
           prune: true
           selfHeal: true
         syncOptions:
           - CreateNamespace=true
-          - ServerSideApply=true
