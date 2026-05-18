@@ -6,7 +6,7 @@ namespace: spring-boot-dev
 images:
 - name: gitops-app
   newName: jun1592/gitops-app
-  newTag: sha-cd12658
+  newTag: sha-8179ec4
 - name: nginx
   newName: jun1592/gitops-app
   newTag: sha-4d20b25
