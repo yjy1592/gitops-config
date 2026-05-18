@@ -1,16 +1,17 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ../../base
+- ../../base
 namespace: spring-boot-dev
 images:
-  - name: nginx
-    newTag: "1.27-alpine"
+- name: nginx
+  newName: your-dockerhub-username/gitops-app
+  newTag: sha-6f66f4e
 patches:
-  - patch: |-
-      - op: replace
-        path: /spec/replicas
-        value: 1
-    target:
-      kind: Deployment
-      name: gitops-app
+- patch: |-
+    - op: replace
+      path: /spec/replicas
+      value: 1
+  target:
+    kind: Deployment
+    name: gitops-app
