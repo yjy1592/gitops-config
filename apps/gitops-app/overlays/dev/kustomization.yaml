@@ -13,10 +13,9 @@ labels:
     includeSelectors: true
     includeTemplates: true
 images:
-- name: gitops-app
-  newName: jun1592/gitops-app
-  newTag: latest
-
-  replicas:
-    - name: gitops-app
-      count: 1
+  - name: gitops-app
+    newName: jun1592/gitops-app
+    newTag: latest
+replicas:
+  - name: gitops-app
+    count: 1
